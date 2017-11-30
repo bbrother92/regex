@@ -3,7 +3,7 @@
 ### Notes:
 
 #### Matcher methods  
-`matches()` attempts to match the entire region against the pattern  
+`matches()` attempts to match the entire region against the pattern SO use `.*pattern.*`  
 `lookingAt()` same as matches method but it does not require that the entire region be matched  
 `find()` attempts to find the next subsequence of the input sequence  
 
@@ -21,3 +21,4 @@
 | Pattern.LITERAL          | None                                | 
 | Pattern.UNICODE_CASE     | (?u)                                | 
 | Pattern.UNIX_LINES       | (?d)                                | 
+
