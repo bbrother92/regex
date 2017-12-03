@@ -23,7 +23,7 @@
 | Pattern.UNIX_LINES       | (?d)                                | 
 
 ### Backslash
-To find backslash in string `"abc\"`, regex would be '\\' but in java each backslash should be escaped: 
+To find backslash in string `"abc\"`, regex would be `"\\"` but in java each backslash should be escaped: 
 `Pattern.compile("\\\\");`
 
 
