@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 import static org.testng.Assert.*;
 
-public class RegexMatcherTest {
+public class RegexMatcherTest extends BaseTest {
 	
 	/**
 	 *
@@ -15,8 +15,8 @@ public class RegexMatcherTest {
 		String text = "ab3c \n sd3C";
 		Pattern p = Pattern.compile("\\dC", Pattern.CASE_INSENSITIVE);
 		Matcher m = p.matcher(text);
-		System.out.println(m.find() ? text.substring(m.start(), m.end()) : "No match"); // 3c
-		System.out.println(m.find() ? text.substring(m.start(), m.end()) : "No match");  // 3C
+		logger.info(m.find() ? text.substring(m.start(), m.end()) : "No match"); // 3c
+		logger.info(m.find() ? text.substring(m.start(), m.end()) : "No match");  // 3C
 		
 	}
 	
@@ -32,9 +32,9 @@ public class RegexMatcherTest {
 		Matcher m = Pattern.compile("(tele)(\\w*)").matcher(text);
 		while (m.find()) {
 			for (int i = 0; i <= m.groupCount(); i++) {
-				System.out.print("Group " + i + ": " + m.group(i) + " ");
+				logger.info("Group " + i + ": " + m.group(i) + " ");
 			}
-			System.out.println();
+			logger.info("\n");
 		}
 		
 	}
@@ -51,7 +51,7 @@ public class RegexMatcherTest {
 		Matcher matcher = pattern.matcher(text);
 		matcher.find();
 		assertEquals(text, matcher.group(1));
-		System.out.println(matcher.group(1));
+		logger.info(matcher.group(1));
 	}
 	
 	/**
@@ -61,12 +61,9 @@ public class RegexMatcherTest {
 	@Test
 	public void multilineFlagTest() {
 		String input = "cat\ndog\ngecko";
-		Pattern p1 = Pattern.compile("^dog$");
-		Pattern p2 = Pattern.compile("^dog$", Pattern.MULTILINE);
+		Pattern p1 = Pattern.compile("^dog$"); //false
+		Pattern p2 = Pattern.compile("^dog$", Pattern.MULTILINE); //true
 		Pattern p3 = Pattern.compile("(?m)^dog$"); // same as MULTILINE
-		System.out.println(p1.matcher(input).find());
-		System.out.println(p2.matcher(input).find());
-		System.out.println(p3.matcher(input).find());
 		
 	}
 }
