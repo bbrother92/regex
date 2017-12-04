@@ -26,4 +26,11 @@
 To find backslash in string `"abc\"`, regex would be `"\\"` but in java each backslash should be escaped: 
 `Pattern.compile("\\\\");`
 
-
+### Unicode
+Use UNICODE_CHARACTER_CLASS flag  
+```java
+String chinese = "四";
+assertTrue(Pattern.compile("\\w", Pattern.UNICODE_CHARACTER_CLASS).matcher(chinese).matches()); // matches word
+assertTrue(Pattern.compile("(?U)\\w").matcher(chinese).matches()); // matches word
+assertTrue(Pattern.compile("\\w").matcher(chinese).matches()); // fails
+```
