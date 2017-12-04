@@ -34,3 +34,18 @@ assertTrue(Pattern.compile("\\w", Pattern.UNICODE_CHARACTER_CLASS).matcher(chine
 assertTrue(Pattern.compile("(?U)\\w").matcher(chinese).matches()); // matches word
 assertTrue(Pattern.compile("\\w").matcher(chinese).matches()); // fails
 ```
+Use unicode classes for Unicode scripts, blocks, categories.
+[link] (http://www.unicode.org/reports/tr18/)
+```java
+String greek="Ω Δ";
+String mixed="Λ d";
+String latinUpper="O D";
+
+assertTrue(greek.matches("(?U)\\p{InGreek} \\w")); // matches
+assertTrue(greek.matches("(?U)\\p{Lu} \\p{Lu}")); // matches Greek Uppercase
+
+assertTrue(mixed.matches("(?U)\\p{IsLatin} \\p{IsLatin}")); // fails
+assertTrue(latinUpper.matches("\\p{Lu} \\p{Lu}")); // matches Latin Uppercase
+assertTrue(mixed.matches("\\P{IsLatin} \\p{IsLatin}")); // matches non latin and latin
+assertTrue(mixed.matches("\\P{IsLatin} \\p{IsLatin}")); // matches non latin and latin
+```
