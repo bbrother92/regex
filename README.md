@@ -35,7 +35,7 @@ assertTrue(Pattern.compile("(?U)\\w").matcher(chinese).matches()); // matches wo
 assertTrue(Pattern.compile("\\w").matcher(chinese).matches()); // fails
 ```
 Use unicode classes for Unicode scripts, blocks, categories.
-[link] (http://www.unicode.org/reports/tr18/)
+[link](http://www.unicode.org/reports/tr18/)
 ```java
 String greek="Ω Δ";
 String mixed="Λ d";
