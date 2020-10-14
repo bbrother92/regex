@@ -4,6 +4,7 @@
 ### Escaping
 ```java
 String st = "+{._ ])";
+//For +.{( you need escape backslash
 assertThat(st, matchesPattern("\\+\\{\\._ ]\\)") );
 
 ```
