@@ -1,6 +1,16 @@
 ### Regex in Java
 [docs](https://docs.oracle.com/javase/tutorial/essential/regex/index.html)
-### Notes:
+
+### Escaping
+```java
+String st = "+{._ ])";
+assertThat(st, matchesPattern("\\+\\{\\._ ]\\)") );
+
+```
+
+#### Backslash
+To find backslash in string `"abc\"`, regex would be `"\\"` but in java each backslash should be escaped: 
+`Pattern.compile("\\\\");`
 
 #### Matcher methods  
 `matches()` attempts to match the entire region against the pattern SO use `.*pattern.*`  
@@ -10,7 +20,7 @@
 #### Pattern  
 `Pattern.quote()` to escape input 
 
-##### Flags  
+#### Flags  
 | Constant                 |  Equivalent Embedded Flag Expression| 
 |--------------------------|-------------------------------------| 
 | Pattern.CANON_EQ         | None                                | 
@@ -22,9 +32,6 @@
 | Pattern.UNICODE_CASE     | (?u)                                | 
 | Pattern.UNIX_LINES       | (?d)                                | 
 
-### Backslash
-To find backslash in string `"abc\"`, regex would be `"\\"` but in java each backslash should be escaped: 
-`Pattern.compile("\\\\");`
 
 ### Unicode
 Use UNICODE_CHARACTER_CLASS flag  
